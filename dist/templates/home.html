@@ -1,2 +1,27 @@
-<body ng-controller='home.controller', class='home'>
-<h1>Home Page</h1>
+<h1>TO-DO LIST</h1>
+<button ng-click='testAdd()'> ADD A TASK </button>
+</br>
+<div>
+</br>
+  <table>
+    <tr ng-repeat="task in tasks"></tr>
+      <td> {{ task.note }} </td>
+  </table>
+</div>
+
+<!--
+/* task in tasks
+$scope.tasks.$add({note: 'hello'})
+$scope.testAdd = function(){
+$scope.tasks.$add({note: 'hello'})
+
+on home.html: ng-click="testAdd()"
+home.html: repeat through task in tasks
+add ng-click="testAdd()" to element (try a button!)
+
+app.js: add testAdd function:
+$scope.testAdd = function(){
+    $scope.tasks.$add({note: 'hello'})
+}
+{{ task.note }} -->
+
