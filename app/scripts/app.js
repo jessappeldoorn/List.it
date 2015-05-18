@@ -1,24 +1,28 @@
 // add angular module
 // inject firebase
-blocitoff = angular.module('Blocitoff', ["firebase", "ui.router"]);
+var app = angular.module("Blocitoff", ["firebase", "ui.router"]);
 
- blocitoff.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+ app.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
    $locationProvider.html5Mode(true);
  
    $stateProvider.state('home', {
      url: '/',
-     controller: 'home.controller',
+     controller: 'Home.controller',
      templateUrl: '/templates/home.html'
    });
  }]);
 // add a controller
-blocitoff.controller('home.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+app.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
   var ref = new Firebase("https://justblocitoff.firebaseio.com/tasks");
 
   $scope.tasks = $firebaseArray(ref);
 
 
- //var sync = $firebase(ref);
+  $scope.addTask = function() {
+    $scope.tasks.$add({
+      text: $scope.newTaskText
+    });
+  };
 
  // create a synchronized (psuedo read-only) array
 // all server changes are downloaded in realtime
@@ -29,11 +33,12 @@ $scope.tasks = tasksArray;
 
 var tasks = sync.$asArray();
 
+// ADD TO FIREBASE
 
   $scope.testAdd = function(){
-    tasks.$add({note: 'finish user story 1'});
-    tasks.$add({note: 'grocery shopping'});
-    tasks.$add({note: 'clean bedroom'});
+    $scope.tasks.$add({ note: 'finish user story 1'});
+    $scope.tasks.$add({ note: 'grocery shopping'});
+    $scope.tasks.$add({ note: 'clean bedroom'});
 };
 
 }]);

@@ -1,4 +1,5 @@
-<h1>TO-DO LIST</h1>
+<!--<h1>TO-DO's</h1>
+
 <button ng-click='testAdd()'> ADD A TASK </button>
 </br>
 <div>
@@ -7,10 +8,29 @@
     <tr ng-repeat="task in tasks"></tr>
       <td> {{ task.note }} </td>
   </table>
-</div>
+</div>-->
 
-<!--
-/* task in tasks
+
+    <ul>
+      <li ng-repeat="task in tasks"> {{ task.text }}</li>
+        <!-- edit a message -->
+        <input ng-model="task.text" ng-change="tasks.$save(task)" />
+
+        <!-- delete a message -->
+        <button ng-click="tasks.$remove(task)">Delete Task</button>
+      </li>
+    </ul>
+
+    <!-- push a new message onto the array -->
+    <form ng-submit="addTask()">
+      <input ng-model="newTaskText" />
+      <button type="submit">Add Task</button>
+    </form>
+
+
+
+
+ <!--task in tasks
 $scope.tasks.$add({note: 'hello'})
 $scope.testAdd = function(){
 $scope.tasks.$add({note: 'hello'})
@@ -23,5 +43,5 @@ app.js: add testAdd function:
 $scope.testAdd = function(){
     $scope.tasks.$add({note: 'hello'})
 }
-{{ task.note }} -->
+{{ task.note }}
 
