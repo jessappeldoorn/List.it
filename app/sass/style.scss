@@ -1,4 +1,23 @@
 html {
-  background: orange;
 }
 
+.navbar-header{
+  background: #FF00D0;
+  text-color: white;
+}
+
+a {
+  text-color: #FF00D0;
+}
+
+h2 {
+  color: white;
+}
+
+nav navbar .ted { 
+  background-color: #000000;
+}
+
+.ted:after { 
+  background-size: 20px ;
+}

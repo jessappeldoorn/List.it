@@ -3,20 +3,30 @@
   <head lang="en">
       <meta charset="UTF-8">
       <title>Blocitoff</title>
-      <base href="/"> <! -- added this to enable HTML5 mode: http://stackoverflow.com/a/16678065 -->
+      <base href="/"> <!-- added this to enable HTML5 mode: http://stackoverflow.com/a/16678065 -->
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.1/build/cssreset/cssreset-min.css">
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="/css/style.css">
+      <link rel="stylesheet" href="css/patternbolt.css" />
+
   </head>
   <body>
      <nav class="nav navbar">
-       <div class="container">
-           <ul class="nav navbar-nav navbar-right">
-             <li><a ui-sref='home'>Lists</a></li>
-           </ul>
+      <div class="ted pb-pattern o-lines-bold">
+        <div class="container-fluid">
+          <div class='navbar-header'> <!-- Nav Bar -->
+            <a ui-sref='landing' class='logo navbar-left'>
+              <h2>ITHO</h2>
+            </a>
+          </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a ui-sref='home'>MY LISTS</a></li>
+            </ul>
+        </div>
        </div>
      </nav>
+
      <div ui-view></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
