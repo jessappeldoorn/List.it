@@ -5,7 +5,7 @@
     <h4> A creatives' self-destructing task list </h4>
   </div>
 </div>
-
+<br/>
 <div class='task-list container'> <!-- task list -->
   <div class='row'>
     <div class='point col-md-8'>
@@ -14,6 +14,7 @@
         <input ng-model="newTaskText" placeholder="Enter your task here" />
           <button type="submit">Add to List</button>
       </form>
+      <br/>
     </div>
   </div>
 </div>
@@ -28,7 +29,7 @@
         <!--<input ng-model="task.text" ng-change="tasks.$save(task)" /> -->
         <!-- we can't manipulate firebase from our view, so in app.js create a function that uses .$save on an task in the tasks array to delete it. Let's worry about editing tasks later-so I'll comment this out for now.--> 
         <ul>
-          <li ng-repeat="task in tasks"> {{ task.text}} <button ng-click="deleteTask(task)">Delete</button></li>
+          <li ng-repeat="task in tasks"> {{ task.text}} <button ng-click="deleteTask(task)">Done</button></li>
           <!-- delete a message -->
           <!-- we can't call the firebase tasks directly here-we can only do that in our app.js file. Create a function that uses .$remove on a task in the array to delete it. -->
         </ul>

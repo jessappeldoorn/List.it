@@ -11,7 +11,15 @@ var app = angular.module("Blocitoff", ["firebase", "ui.router"]);
      controller: 'Home.controller',
      templateUrl: '/templates/home.html'
    });
+
+   $stateProvider.state('history', {
+     url: '/history',
+     controller: 'History.controller',
+     templateUrl: '/templates/history.html'
+   });
+
  }]);
+
 // add a controller
 app.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
   var ref = new Firebase("https://justblocitoff.firebaseio.com/tasks");
@@ -36,6 +44,31 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, 
     $scope.tasks.$add({ note: 'grocery shopping'});
     $scope.tasks.$add({ note: 'clean bedroom'});
 	};*/
+}]);
+
+app.controller('History.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+  var ref = new Firebase("https://justblocitoff.firebaseio.com/tasks");
+// create a synchronized (psuedo read-only) array
+// all server changes are downloaded in realtime
+  $scope.tasks = $firebaseArray(ref);
+
+  $scope.addTask = function() {
+    $scope.tasks.$add({
+      text: $scope.newTaskText
+    });
+  };
+
+  $scope.deleteTask = function(task){
+    $scope.tasks.$remove(task)
+}
+
+// ADD TO FIREBASE
+
+/*  $scope.testAdd = function(){
+    $scope.tasks.$add({ note: 'finish user story 1'});
+    $scope.tasks.$add({ note: 'grocery shopping'});
+    $scope.tasks.$add({ note: 'clean bedroom'});
+  };*/
 }]);
 
 
