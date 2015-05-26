@@ -65,13 +65,6 @@ app.controller('History.controller', ['$scope', '$firebaseArray', function($scop
     $scope.tasks.$remove(task)
 }
 
-// ADD TO FIREBASE
-
-/*  $scope.testAdd = function(){
-    $scope.tasks.$add({ note: 'finish user story 1'});
-    $scope.tasks.$add({ note: 'grocery shopping'});
-    $scope.tasks.$add({ note: 'clean bedroom'});
-  };*/
 }]);
 
 
