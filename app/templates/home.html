@@ -1,42 +1,49 @@
 
-<div class='hero-content'> <!-- Hero content -->
-  <div class='container'>
-    <h1> In the Habit Of </h1>
-    <h4> A creatives' self-destructing task list </h4>
-  </div>
-</div>
-<br/>
-<div class='task-list container'> <!-- task list -->
-  <div class='row'>
-    <div class='point col-md-8'>
-      <!-- push a new message onto the array -->
-      <form ng-submit="addTask()">
-        <input ng-model="newTaskText" placeholder="Enter your task here" />
-          <button type="submit">Add to List</button>
-      </form>
-      <br/>
+<div class="jumbotron">
+  <div class="container">
+    <div class="heading">
+      <h1>List.it</h1>
+      <p>Stay <strong>motivated</strong>.</p>
+      <p>Keep track of your <strong>progress</strong>.</p>
     </div>
+  
+    </br>
+
+    <div class="task-list-container">
+      <div class="row">
+        <div class="col-lg-6">
+          <ul class="list-group-item">
+            <h4 class="input-group-item list-title">Current Tasks</h4>
+            <form class="input-group" ng-submit="addTask()">
+              <input type="text" ng-model="newTaskText" class="form-control" placeholder="Add to your list...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+              </span>
+            </form><!-- /input-group -->
+            </br>
+            <li class="list-group-item" ng-repeat="task in tasks"> {{ task.text}} <input type="checkbox" ng-click="deleteTask(task)"/></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class='task-list container'>
-  <div class="row">
-    <div class="point col-md-8">
-      <div class="tasks">
-      <!-- We can now look at the entire task object, and the values of its text and note properties-the ID looks weird because that's the ID firebase gives each item in our tasks array.-->
+<div class="details">
+  <h4>Task Notes</h4>
+</div>
 
-        <!-- edit a message -->
-        <!--<input ng-model="task.text" ng-change="tasks.$save(task)" /> -->
-        <!-- we can't manipulate firebase from our view, so in app.js create a function that uses .$save on an task in the tasks array to delete it. Let's worry about editing tasks later-so I'll comment this out for now.--> 
-        <ul>
-          <li ng-repeat="task in tasks"> {{ task.text}} <button ng-click="deleteTask(task)">Done</button></li>
-          <!-- delete a message -->
-          <!-- we can't call the firebase tasks directly here-we can only do that in our app.js file. Create a function that uses .$remove on a task in the array to delete it. -->
-        </ul>
-      </div>
-     </div> 
-   </div>
- </div>
+
+
+
+
+
+
+
+
 
   
 

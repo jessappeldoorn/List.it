@@ -29,13 +29,20 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, 
 
   $scope.addTask = function() {
     $scope.tasks.$add({
-      text: $scope.newTaskText
+      done: false,
+      text: $scope.newTaskText,
+      destructed: false,
     });
+    $scope.newTaskText = " ";
   };
 
   $scope.deleteTask = function(task){
     $scope.tasks.$remove(task)
 }
+
+  //$scope.completedTask = function() {
+    //$scope.tasks = false;
+  //};
 
 // ADD TO FIREBASE
 
@@ -44,6 +51,8 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, 
     $scope.tasks.$add({ note: 'grocery shopping'});
     $scope.tasks.$add({ note: 'clean bedroom'});
 	};*/
+
+  app.directive()
 }]);
 
 app.controller('History.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
@@ -52,13 +61,8 @@ app.controller('History.controller', ['$scope', '$firebaseArray', function($scop
 // all server changes are downloaded in realtime
   $scope.tasks = $firebaseArray(ref);
 
-  $scope.addTask = function() {
-    $scope.tasks.$add({
-      text: $scope.newTaskText
-    });
-  };
 
-  $scope.deleteTask = function(task){
+  $scope.completeTask = function(task) {
     $scope.tasks.$remove(task)
 }
 
@@ -70,6 +74,8 @@ app.controller('History.controller', ['$scope', '$firebaseArray', function($scop
     $scope.tasks.$add({ note: 'clean bedroom'});
   };*/
 }]);
+
+
 
 
 
