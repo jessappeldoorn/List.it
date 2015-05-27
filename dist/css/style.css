@@ -1,11 +1,22 @@
 .jumbotron {
-  position: relative;
-  background: #000 url("https://download.unsplash.com/uploads/141103282695035fa1380/95cdfeef") center center;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; }
+  background: #000 url("https://download.unsplash.com/uploads/141103282695035fa1380/95cdfeef") center center fixed;
+  background-size: cover; }
   .jumbotron .heading {
     text-align: center; }
     .jumbotron .heading h1 {
       font-size: 100px; }
+
+.todo {
+  border: none;
+  padding-left: 15px;
+  padding-right: 190px; }
+
+.details {
+  padding-left: 30px; }
+
+.row {
+  margin: 0 auto; }
+
+.date {
+  width: 80px;
+  border: none; }
