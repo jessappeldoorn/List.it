@@ -13,7 +13,7 @@
         <div class="col-lg-6 col-lg-offset-3">
           <!-- Add tasks -->
           <div class="list-group-item">
-            <form class="input-group" ng-submit="addTask()">
+            <form class="input-group" ng-submit="addTask()" ng-keyup="expiredTask()">
               <input type="text" ng-model="newTaskText" class="form-control" placeholder="Add to your list..">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
@@ -38,7 +38,7 @@
                 <span class="glyphicon glyphicon-pencil" ng-click="deleteTask($index)"></span>
                 <input type="text" class="todo" ng-model="task.text">
                 <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)">
-                <span class="glyphicon glyphicon-check" ng-click="completeTask(task)"></span>
+                <span class="glyphicon glyphicon-check" ng-model="task.done" ng-click="completeTask(task)"></span>
                 <span class="glyphicon glyphicon-trash" ng-click="deleteTask(task)"></span>
               </div>
         </div><!-- end of col-lg-6 -->
@@ -61,14 +61,7 @@
 <!-- this ng-click talks to the testAdd function -->
    <!-- <button ng-click="testAdd()">Click me to test adding!</button> -->
 
-
-
-
-
  <!--task in tasks
-$scope.tasks.$add({note: 'hello'})
-$scope.testAdd = function(){
-$scope.tasks.$add({note: 'hello'})
 
 on home.html: ng-click="testAdd()"
 home.html: repeat through task in tasks
@@ -78,5 +71,5 @@ app.js: add testAdd function:
 $scope.testAdd = function(){
     $scope.tasks.$add({note: 'hello'})
 }
-{{ task.note }}
+
 

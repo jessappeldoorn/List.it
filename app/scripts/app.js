@@ -19,54 +19,72 @@ var app = angular.module("Blocitoff", ["firebase", "ui.router"]);
 
  }]);
 
-// add a controller
-app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', function($scope, $firebaseArray, $interval){
-  var ref = new Firebase("https://justblocitoff.firebaseio.com/tasks");
+// home controller
+app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$timeout', function($scope, $firebaseArray, $interval, $timeout){
+  var ref = new Firebase("https://justlistit.firebaseio.com");
+
 // create a synchronized (psuedo read-only) array
-// all server changes are downloaded in realtime
   $scope.tasks = $firebaseArray(ref);
   
-
-  $scope.addTask = function(task) { // add task to list
-    $scope.tasks.$add({
+  $scope.addTask = function() { // add task to list
+    var today = new Date();
+    var newTask = {
       text: $scope.newTaskText,
       done: false,
       expired: false,
-      created: new Date(),
-    });
+      created: today.getDay()
+    };
 
-    $scope.tasks.$add(); // Push into array
+    $scope.tasks.$add(newTask); // Push into array
     $scope.newTaskText = " ";
-   // console.log("added new task");
+
+    $timeout( function(){ $scope.expiredTask(); }, 5000);
   };
+
+    /*$interval(function(){
+      $scope.tasks.$add({
+      done: true
+      });
+      $scope.tasks.$save();
+      },3000);
+        };*/
 
   $scope.completeTask = function(task) { // remove completed task from list
-    $scope.tasks.$add({ 
-      done: true 
-    });
-    $scope.tasks.$save();
-
-    console.log("did something");
-  
+    task.done = true;
+    $scope.tasks.$save(task);
   };
-    $scope.deleteTask = function(task){
+ 
+  $scope.deleteTask = function(task){
     $scope.tasks.$remove(task);
-};
+  };
 
   $scope.expiredTask = function(task) {
-    //if(task.created )
-      $scope.tasks.$add({
-      expired: true
-    });
+     task.expired = true;
+     $scope.tasks.$save(task);
+  };
 
-      $scope.tasks.$save();
-      };
-      console.log("$scope.expiredTask - Interval occurred");
+
+     // $scope.tasks.$save();
+      //$interval( function(){ $scope.expiredTask(); }, 3000);
+      //};
+      //console.log("$scope.addTask - Interval occurred");
   
 
-    //$interval( function(){ $scope.expiredTask(); }, 3000);
+     // $scope.callAtTimeout = function() {
+     // $scope.tasks.$add({
+       // expired: true
+       //console.log("this function sucks");
+     //};
+     // });
+   //   $scope.tasks.$save();
+
+     //   console.log("$scope.callAtTimeout - Timeout occurred");
+          //  $timeout( function(){ $scope.callAtTimeout(); }, 3000);
+
+    //  $timeout( function(){ $scope.callAtTimeout(); }, 3000);
 
 
+   // };
 
 }]);
 
