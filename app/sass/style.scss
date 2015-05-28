@@ -1,6 +1,11 @@
+.links a {
+  color: black;
+}
+
 .jumbotron {
   background: #000 url('https://download.unsplash.com/uploads/141103282695035fa1380/95cdfeef') center center fixed;
   background-size: cover;
+  margin-top: auto 0;
 
   .heading {
     text-align: center;
@@ -18,10 +23,6 @@
   padding-right: 190px;
 }
 
-.details {
-  padding-left: 30px;
-}
-
 .row {
   margin: 0 auto;
 }
@@ -30,3 +31,45 @@
   width: 80px;
   border: none;
 }
+
+.information {
+  padding-bottom: 50px;
+  text-align: center;
+
+  p {
+    font-size: 20px;
+    margin-right: 200px;
+    margin-left: 200px;
+  }
+ 
+}
+
+.about {
+  width: 800px;
+  font-size: 18px;
+}
+
+.footer p {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.navbar-left h3 {
+  padding-left: 5px;
+  line-height: 15px;
+  padding-right: 10px;
+  background: yellow;
+  margin-right: 15px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.navbar-nav li a {
+  line-height: 25px;
+  padding-left: 15px;
+}
+
+

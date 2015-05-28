@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>List.It</title>
     <base href="/"> <!-- added this to enable HTML5 mode: http://stackoverflow.com/a/16678065 -->
-    <link rel="stylesheet" href="css/patternbolt.css" />
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.1/build/cssreset/cssreset-min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -14,10 +13,13 @@
     <nav class="nav navbar">
       <div class="container-fluid">
         <div class='navbar-header'> <!-- Nav Bar -->
-          <ul class="nav navbar-nav navbar-right">
-            <li class="links"><a ui-sref='history'>LIST HISTORY</a></li>
-            <li class="links"><a ui-sref='home'>ACTIVE LIST</a></li>
-          </ul>
+          <div class="nav navbar-nav navbar-left">
+            <span><h3>List.it</h3>
+          </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="links"><a ui-sref='history'><strong>LIST HISTORY</strong></a></li>
+              <li class="links"><a ui-sref='home'><strong>ACTIVE LIST</strong></a></li>
+            </ul>
         </div>
       </div>
     </nav>
@@ -29,4 +31,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
     <script src="/js/app.js"></script>
   </body>
+  <footer>
+    <div class="footer">
+      <p>&copy 2015 List.it</p>
+    </div>
+  </footer>
 </html>
