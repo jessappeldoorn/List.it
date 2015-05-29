@@ -14,14 +14,14 @@
       <div class="container-fluid">
         <div class='navbar-header'> <!-- Nav Bar -->
           <div class="nav navbar-nav navbar-left">
-            <h3>List.it</h3>
+            <li class="links"><a ui-sref='home'><h3>List.it</h3></a></li>
           </div>
         </div>
         <div class="nav navbar-nav navbar-right">
             <ul class="nav navbar-nav navbar-right">
-              <li class="links"><a ui-sref='history'><strong>LIST HISTORY</strong></a></li>
+              <li class="links"><a ui-sref='history' ng-class=><strong>LIST HISTORY</strong></a></li>
               <li class="links"><a ui-sref='home'><strong>ACTIVE LIST</strong></a></li>
-              <li class="links"><button><span class="glyphicon glyphicon-user"></span></button>
+              <li class="links"><button class="login-button"><span class="glyphicon glyphicon-user"></span></button>
             </ul>
         </div>
       </div>

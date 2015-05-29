@@ -12,7 +12,7 @@
 
 .todo {
   border: none;
-  width: 270px; }
+  width: 100%; }
 
 .row {
   margin: 0 auto; }
@@ -43,16 +43,15 @@
 .navbar-left h3 {
   padding-left: 5px;
   line-height: 15px;
-  padding-right: 10px;
   background: yellow;
-  margin-right: 15px; }
+  margin-top: 14px; }
 
 .navbar {
   margin-bottom: 0px;
   margin-top: 0px; }
 
 .navbar-nav li a {
-  line-height: 25px;
+  line-height: 40px;
   padding-left: 15px; }
 
 .navbar-right {
@@ -64,5 +63,40 @@ button {
 
 .glyphicon-user {
   padding-left: 10px;
-  padding-top: 10px;
+  padding-top: 18px;
   font-size: 25px; }
+
+.glyphicon-star {
+  font-size: 20px;
+  padding-top: 5px;
+  color: #505052; }
+
+.glyphicon-star:hover {
+  color: yellow; }
+
+.glyphicon-ok {
+  padding-left: 5px;
+  font-size: 20px;
+  color: #505052; }
+
+.glyphicon-ok:hover {
+  color: #40FF00; }
+
+.glyphicon-remove {
+  padding-left: 10px;
+  font-size: 20px;
+  color: #505052; }
+
+.glyphicon-remove:hover {
+  color: magenta; }
+
+.login-button {
+  border: none; }
+
+.message1 {
+  border: none;
+  font-weight: bold; }
+
+.message2 {
+  border: none;
+  font-weight: bold; }

@@ -1,14 +1,31 @@
+<div class="jumbotron">
+  <div class="container">
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <h4 class="list-group-item">LIST HISTORY</h4>
-        <!-- List of tasks -->
-      <div class="list-group-item" ng-repeat="task in tasks" ng-show="task.done || task.expired">
-        <input type="text" class="todo" ng-model="task.text">
-        <input class="date" type="text" ng-model="task.created">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h4 class="list-group-item">LIST HISTORY</h4>
+          <!-- List of tasks -->
+        <div class="list-group-item" ng-repeat="task in tasks" ng-show="task.done || task.expired">
+          <input type="text" class="todo" ng-model="task.text">
+          <input class="message1" type="text" value="Complete" ng-show="task.done">
+          <input class="message2" type="text" value="** Expired **" ng-show="task.expired">
+        </div>
       </div>
-    </div>
-  </div>  
-</div>
+    </div>  
+  </div>
+   
+  </div> <!-- end of container -->
+</div> <!-- end of jumbotron -->
+
+
+
+
+
+
+
+
+
+
+
 
