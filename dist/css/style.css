@@ -1,6 +1,10 @@
+.links a {
+  color: black; }
+
 .jumbotron {
   background: #000 url("https://download.unsplash.com/uploads/141103282695035fa1380/95cdfeef") center center fixed;
-  background-size: cover; }
+  background-size: cover;
+  margin-top: auto 0; }
   .jumbotron .heading {
     text-align: center; }
     .jumbotron .heading h1 {
@@ -8,15 +12,91 @@
 
 .todo {
   border: none;
-  padding-left: 15px;
-  padding-right: 190px; }
-
-.details {
-  padding-left: 30px; }
+  width: 100%; }
 
 .row {
   margin: 0 auto; }
 
 .date {
-  width: 80px;
+  width: 150px;
   border: none; }
+
+.information {
+  padding-bottom: 50px;
+  text-align: center; }
+  .information p {
+    font-size: 20px;
+    margin-right: 200px;
+    margin-left: 200px; }
+
+.form-control {
+  overflow: auto; }
+
+.about {
+  width: 800px;
+  font-size: 18px; }
+
+.footer p {
+  padding-top: 50px;
+  text-align: center; }
+
+.navbar-left h3 {
+  padding-left: 5px;
+  line-height: 15px;
+  background: yellow;
+  margin-top: 14px; }
+
+.navbar {
+  margin-bottom: 0px;
+  margin-top: 0px; }
+
+.navbar-nav li a {
+  line-height: 40px;
+  padding-left: 15px; }
+
+.navbar-right {
+  padding-right: 20px; }
+
+button {
+  background-color: white;
+  border: none; }
+
+.glyphicon-user {
+  padding-left: 10px;
+  padding-top: 18px;
+  font-size: 25px; }
+
+.glyphicon-star {
+  font-size: 20px;
+  padding-top: 5px;
+  color: #505052; }
+
+.glyphicon-star:hover {
+  color: yellow; }
+
+.glyphicon-ok {
+  padding-left: 5px;
+  font-size: 20px;
+  color: #505052; }
+
+.glyphicon-ok:hover {
+  color: #40FF00; }
+
+.glyphicon-remove {
+  padding-left: 10px;
+  font-size: 20px;
+  color: #505052; }
+
+.glyphicon-remove:hover {
+  color: magenta; }
+
+.login-button {
+  border: none; }
+
+.message1 {
+  border: none;
+  font-weight: bold; }
+
+.message2 {
+  border: none;
+  font-weight: bold; }

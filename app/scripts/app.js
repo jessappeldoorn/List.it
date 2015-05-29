@@ -19,60 +19,78 @@ var app = angular.module("Blocitoff", ["firebase", "ui.router"]);
 
  }]);
 
-// add a controller
-app.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray){
-  var ref = new Firebase("https://justblocitoff.firebaseio.com/tasks");
-// create a synchronized (psuedo read-only) array
-// all server changes are downloaded in realtime
-  $scope.tasks = $firebaseArray(ref);
-  
+// home controller
+app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$timeout', function($scope, $firebaseArray, $interval, $timeout){
+  var ref = new Firebase("https://justlistit.firebaseio.com");
 
+// create a synchronized (psuedo read-only) array
+  $scope.tasks = $firebaseArray(ref);
+  var fireTime = Firebase.ServerValue.TIMESTAMP;
+  
   $scope.addTask = function() { // add task to list
     var newTask = {
       text: $scope.newTaskText,
       done: false,
       expired: false,
-      created: new Date()
-
+      created: fireTime
     };
 
     $scope.tasks.$add(newTask); // Push into array
-    $scope.tasks.$save();
     $scope.newTaskText = " ";
-    console.log("added new task");
   };
+
+    /*$interval(function(){
+      $scope.tasks.$add({
+      done: true
+      });
+      $scope.tasks.$save();
+      },3000);
+        };*/
 
   $scope.completeTask = function(task) { // remove completed task from list
-    var completedTask = {
-      text: $scope.tasks[task].text,
-      done: true,
-      expired: false,
-      created: new Date()
+    task.done = true;
+    $scope.tasks.$save(task);
+  };
+ 
+  $scope.deleteTask = function(task){
+    $scope.tasks.$remove(task);
+  };
+
+ /* $scope.expiredTask = function(task) {
+    var today = new Date();
+      if(task.created === today.toDateString) {
+        task.expired = true;
+        $scope.tasks.$save(task);
+      };
     };
 
-    $scope.tasks.$add(completedTask);
-    $scope.tasks.$save();
-    $scope.tasks.$remove(task);
+    $timeout( function(){ $scope.expiredTask(); }, 5000); */
 
-    console.log("did something");
-  
-  };
+ $scope.expiredTask = function() {
+  console.log("Called expiredTask!");
+  $scope.tasks.forEach(function(task){
+    var createdAt = task.created,
+    currentTime = new Date().getTime();
+
+    if( currentTime - createdAt > 604800000 ){
+      console.log("Expire this task " + task);
+      task.expired = true;
+      $scope.tasks.$save(task);
+    }
+    else{
+    console.log("Did not expire " + task);  
+  }
+  });
+}
 
 
+$interval( function(){ $scope.expiredTask(); }, 86400000)
 
-    $scope.deleteTask = function(task){
-    $scope.tasks.$remove(task);
-    $scope.tasks[task].done = true;
-};
-
-  $scope.expiredTask = function() {
-
-  };
 
 }]);
 
 app.controller('History.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
-  var ref = new Firebase("https://justblocitoff.firebaseio.com/tasks");
+  var ref = new Firebase("https://justlistit.firebaseio.com");
 // create a synchronized (psuedo read-only) array
 // all server changes are downloaded in realtime
   $scope.tasks = $firebaseArray(ref);
