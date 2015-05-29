@@ -26,14 +26,14 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
 
 // create a synchronized (psuedo read-only) array
   $scope.tasks = $firebaseArray(ref);
+  var fireTime = Firebase.ServerValue.TIMESTAMP;
   
   $scope.addTask = function() { // add task to list
-    var today = new Date();
     var newTask = {
       text: $scope.newTaskText,
       done: false,
       expired: false,
-      created: today.toDateString()
+      created: fireTime
     };
 
     $scope.tasks.$add(newTask); // Push into array
@@ -57,7 +57,7 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
     $scope.tasks.$remove(task);
   };
 
-  $scope.expiredTask = function(task) {
+ /* $scope.expiredTask = function(task) {
     var today = new Date();
       if(task.created === today.toDateString) {
         task.expired = true;
@@ -65,9 +65,27 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
       };
     };
 
-    $timeout( function(){ $scope.expiredTask(); }, 5000);
+    $timeout( function(){ $scope.expiredTask(); }, 5000); */
+
+ $scope.expiredTask = function() {
+  console.log("Called expiredTask!");
+  $scope.tasks.forEach(function(task){
+    var createdAt = task.created,
+    currentTime = new Date().getTime();
+
+    if( currentTime - createdAt > 604800000 ){
+      console.log("Expire this task " + task);
+      task.expired = true;
+      $scope.tasks.$save(task);
+    }
+    else{
+    console.log("Did not expire " + task);  
+  }
+  });
+}
 
 
+$interval( function(){ $scope.expiredTask(); }, 86400000)
 
 
 }]);

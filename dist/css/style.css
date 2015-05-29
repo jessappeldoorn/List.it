@@ -55,6 +55,14 @@
   line-height: 25px;
   padding-left: 15px; }
 
+.navbar-right {
+  padding-right: 20px; }
+
 button {
   background-color: white;
   border: none; }
+
+.glyphicon-user {
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 25px; }
