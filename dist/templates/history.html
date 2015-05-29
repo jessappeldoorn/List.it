@@ -4,11 +4,7 @@
     <div class="col-lg-6 col-lg-offset-3">
       <h4 class="list-group-item">LIST HISTORY</h4>
         <!-- List of tasks -->
-      <div class="list-group-item" ng-show="newTaskText">
-        <input type="checkbox" disabled='true'>
-        <input type="text" disabled='true' class="todo" placeholder= "{{ newTaskText }}" >
-      </div>
-      <div class="list-group-item" ng-repeat="task in tasks" ng-show="task.done">
+      <div class="list-group-item" ng-repeat="task in tasks" ng-show="task.done || task.expired">
         <input type="text" class="todo" ng-model="task.text">
         <input class="date" type="text" ng-model="task.created">
       </div>

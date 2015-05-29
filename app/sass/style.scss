@@ -19,8 +19,7 @@
 
 .todo {
   border: none;
-  padding-left: 15px;
-  padding-right: 190px;
+  width: 270px;
 }
 
 .row {
@@ -28,7 +27,7 @@
 }
 
 .date {
-  width: 80px;
+  width: 150px;
   border: none;
 }
 
@@ -42,6 +41,10 @@
     margin-left: 200px;
   }
  
+}
+
+.form-control {
+  overflow: auto;
 }
 
 .about {
@@ -72,4 +75,8 @@
   padding-left: 15px;
 }
 
+button {
+  background-color: white;
+  border: none;
+}
 

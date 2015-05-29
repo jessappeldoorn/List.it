@@ -33,13 +33,11 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
       text: $scope.newTaskText,
       done: false,
       expired: false,
-      created: today.getDay()
+      created: today.toDateString()
     };
 
     $scope.tasks.$add(newTask); // Push into array
     $scope.newTaskText = " ";
-
-    $timeout( function(){ $scope.expiredTask(); }, 5000);
   };
 
     /*$interval(function(){
@@ -60,37 +58,22 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
   };
 
   $scope.expiredTask = function(task) {
-     task.expired = true;
-     $scope.tasks.$save(task);
-  };
+    var today = new Date();
+      if(task.created === today.toDateString) {
+        task.expired = true;
+        $scope.tasks.$save(task);
+      };
+    };
+
+    $timeout( function(){ $scope.expiredTask(); }, 5000);
 
 
-     // $scope.tasks.$save();
-      //$interval( function(){ $scope.expiredTask(); }, 3000);
-      //};
-      //console.log("$scope.addTask - Interval occurred");
-  
 
-     // $scope.callAtTimeout = function() {
-     // $scope.tasks.$add({
-       // expired: true
-       //console.log("this function sucks");
-     //};
-     // });
-   //   $scope.tasks.$save();
-
-     //   console.log("$scope.callAtTimeout - Timeout occurred");
-          //  $timeout( function(){ $scope.callAtTimeout(); }, 3000);
-
-    //  $timeout( function(){ $scope.callAtTimeout(); }, 3000);
-
-
-   // };
 
 }]);
 
 app.controller('History.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
-  var ref = new Firebase("https://justblocitoff.firebaseio.com/tasks");
+  var ref = new Firebase("https://justlistit.firebaseio.com");
 // create a synchronized (psuedo read-only) array
 // all server changes are downloaded in realtime
   $scope.tasks = $firebaseArray(ref);

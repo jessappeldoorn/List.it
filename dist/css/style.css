@@ -12,14 +12,13 @@
 
 .todo {
   border: none;
-  padding-left: 15px;
-  padding-right: 190px; }
+  width: 270px; }
 
 .row {
   margin: 0 auto; }
 
 .date {
-  width: 80px;
+  width: 150px;
   border: none; }
 
 .information {
@@ -29,6 +28,9 @@
     font-size: 20px;
     margin-right: 200px;
     margin-left: 200px; }
+
+.form-control {
+  overflow: auto; }
 
 .about {
   width: 800px;
@@ -52,3 +54,7 @@
 .navbar-nav li a {
   line-height: 25px;
   padding-left: 15px; }
+
+button {
+  background-color: white;
+  border: none; }
