@@ -17,6 +17,12 @@ var app = angular.module("Blocitoff", ["firebase", "ui.router"]);
      templateUrl: '/templates/history.html'
    });
 
+   $stateProvider.state('profile', {
+     url: '/profile',
+     controller: 'Profile.controller',
+     templateUrl: '/templates/profile.html'
+   });
+
  }]);
 
 // home controller
@@ -90,6 +96,19 @@ $interval( function(){ $scope.expiredTask(); }, 86400000)
 }]);
 
 app.controller('History.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+  var ref = new Firebase("https://justlistit.firebaseio.com");
+// create a synchronized (psuedo read-only) array
+// all server changes are downloaded in realtime
+  $scope.tasks = $firebaseArray(ref);
+
+
+  $scope.completeTask = function(task) {
+    $scope.tasks.$remove(task);
+  };
+
+}]);
+
+app.controller('Profile.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
   var ref = new Firebase("https://justlistit.firebaseio.com");
 // create a synchronized (psuedo read-only) array
 // all server changes are downloaded in realtime
