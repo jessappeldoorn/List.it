@@ -12,14 +12,15 @@
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
           <!-- Add tasks -->
-          <div class="list-group-item">
             <form class="input-group" ng-submit="addTask()">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" ng-click="highPriority(task)"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
+              </span>
               <input type="text" ng-model="newTaskText" class="form-control" placeholder="Add to your list..">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
               </span>
             </form>
-          </div> <!-- end of list-group-item -->
         </div> <!-- end of col-lg-6 -->
       </div> <!-- end of row -->
     </div>  <!-- end of container -->
@@ -27,19 +28,18 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
-              <h4 class="list-group-item">ACTIVE LIST</h4>
-              <!-- List of tasks -->
-              <div class="list-group-item" ng-show="newTaskText">
-                  <input type="checkbox" disabled='true'>
-                  <input type="text" disabled='true' class="todo" placeholder= "{{ newTaskText }}" >
-                </div>
-                <div class="list-group-item" ng-repeat="task in tasks" ng-hide="task.expired || task.done">
-                  <input type="text" class="todo" ng-model="task.text">
-            <!--      <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)"> -->
-                  <button ng-click="myStyle={color: 'yellow'}"><span class="glyphicon glyphicon-star" ng-style="myStyle" ng-click="highPriority()"></span></button>
-                  <span class="glyphicon glyphicon-ok" ng-model="task.done" ng-click="completeTask(task)"></span>
-                  <span class="glyphicon glyphicon-remove" ng-click="deleteTask(task)"></span>
-              </div>
+          <h4 class="list-group-item">ACTIVE LIST</h4>
+          <!-- List of tasks -->
+          <div class="list-group-item" ng-show="newTaskText">
+              <input type="text" disabled='true' class="todo" placeholder= "{{ newTaskText }}" >
+            </div>
+            <div class="list-group-item" ng-repeat="task in tasks" ng-hide="task.expired || task.done">
+              <input type="text" class="todo" ng-model="task.text">
+        <!--      <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)"> -->
+              <button ng-click="myStyle={color: 'yellow'}"><span class="glyphicon glyphicon-star" ng-style="myStyle"></span></button>
+              <span class="glyphicon glyphicon-ok" ng-model="task.done" ng-click="completeTask(task)"></span>
+              <span class="glyphicon glyphicon-remove" ng-click="deleteTask(task)"></span>
+          </div>
         </div><!-- end of col-lg-6 -->
       </div> <!-- end of row -->
     </div> <!-- end of container -->

@@ -45,14 +45,6 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
     $scope.newTaskText = " ";
   };
 
-    /*$interval(function(){
-      $scope.tasks.$add({
-      done: true
-      });
-      $scope.tasks.$save();
-      },3000);
-        };*/
-
   $scope.completeTask = function(task) { // remove completed task from list
     task.done = true;
     $scope.tasks.$save(task);
@@ -61,16 +53,6 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
   $scope.deleteTask = function(task){
     $scope.tasks.$remove(task);
   };
-
- /* $scope.expiredTask = function(task) {
-    var today = new Date();
-      if(task.created === today.toDateString) {
-        task.expired = true;
-        $scope.tasks.$save(task);
-      };
-    };
-
-    $timeout( function(){ $scope.expiredTask(); }, 5000); */
 
  $scope.expiredTask = function() {
   console.log("Called expiredTask!");
@@ -89,8 +71,13 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
   });
 }
 
+$interval( function(){ $scope.expiredTask(); }, 86400000);
 
-$interval( function(){ $scope.expiredTask(); }, 86400000)
+  $scope.highPriority = function(task) {
+    $scope.tasks.$add({
+      priority: "high"
+    })
+  };
 
 
 }]);
