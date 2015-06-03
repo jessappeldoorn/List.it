@@ -11,19 +11,38 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
-          <!-- Add tasks -->
+         <!-- Add tasks -->
+          <form class="input-group" ng-submit="addTask()">
+            <input type="text" ng-model="newTaskText" class="form-control" aria-label="Task" placeholder="Add to your list...">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-click="setPriority(priority)"> Priority <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right" ng-repeat="priority in priorities" role="menu">
+                  <li><a href="#"> {{ priority }} </a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+              </div>
+          </form>
+        </div> <!-- end of col-lg-6 -->
+      </div> <!-- end of row -->
+    </div> <!-- end of container -->
+
+    <!--<div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+       
             <form class="input-group" ng-submit="addTask()">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" ng-click="highPriority(task)"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
-              </span>
               <input type="text" ng-model="newTaskText" class="form-control" placeholder="Add to your list..">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-              </span>
+              </span> 
             </form>
-        </div> <!-- end of col-lg-6 -->
-      </div> <!-- end of row -->
-    </div>  <!-- end of container -->
+        </div> 
+      </div> 
+    </div>  -->
 
     <div class="container">
       <div class="row">
