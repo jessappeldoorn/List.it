@@ -15,14 +15,14 @@
           <form class="input-group" ng-submit="addTask()">
             <input type="text" ng-model="newTaskText" class="form-control" aria-label="Task" placeholder="Add to your list...">
               <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Priority <span class="caret"></span></button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> {{ priority }} <span class="caret"></span></button>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                  <!--<li ng-repeat="priority in priorities" ><a href="#"> {{ priority }} </a></li>-->
-                  
+                  <li ng-repeat="priority in priorityLevel"><a href="" ng-click="setPriority(priority)"> {{ priority }} </a></li>
+                  <!-- 
                   <li><a href="#">Another action</a></li>
                   <li><a href="#">Something else here</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Separated link</a></li> -->
                 </ul>
                 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
               </div>
@@ -54,7 +54,8 @@
               <input type="text" disabled='true' class="todo" placeholder= "{{ newTaskText }}" >
             </div>
             <div class="list-group-item" ng-repeat="task in tasks" ng-hide="task.expired || task.done">
-              <input type="text" class="todo" ng-model="task.text">
+              <div class="todo"> {{ task.text }} </div><br/>
+              <div class="todo">Priority: {{ task.priority }} </div>
         <!--      <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)"> -->
               <button ng-click="myStyle={color: 'yellow'}"><span class="glyphicon glyphicon-star" ng-style="myStyle"></span></button>
               <span class="glyphicon glyphicon-ok" ng-model="task.done" ng-click="completeTask(task)"></span>

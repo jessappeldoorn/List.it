@@ -34,6 +34,7 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
   $scope.tasks = $firebaseArray(ref);
   var fireTime = Firebase.ServerValue.TIMESTAMP;
   $scope.priorityLevel = ['High', 'Medium', 'Low'];
+  $scope.priority = "Priority";
   
   $scope.addTask = function() { // add task to list
     var newTask = {
@@ -41,11 +42,12 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
       done: false,
       expired: false,
       created: fireTime,
-      priority: " "
+      priority: $scope.priority
     };
 
     $scope.tasks.$add(newTask); // Push into array
     $scope.newTaskText = " ";
+    $scope.priority = "Priority";
   };
 
   $scope.completeTask = function(task) { // remove completed task from list
@@ -57,7 +59,7 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
     $scope.tasks.$remove(task);
   };
 
- $scope.expiredTask = function() {
+  $scope.expiredTask = function() {
   console.log("Called expiredTask!");
   $scope.tasks.forEach(function(task){
     var createdAt = task.created,
@@ -72,14 +74,14 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
     console.log("Did not expire " + task);  
   }
   });
-}
+  }
 
-$interval( function(){ $scope.expiredTask(); }, 86400000);
+  $interval( function(){ $scope.expiredTask(); }, 86400000);
 
   $scope.setPriority = function(priority) {
-    $scope.priorityLevel = priority
+  console.log("Priority set to " + priority);
+  $scope.priority = priority;
   };
-  
 
 }]);
 
