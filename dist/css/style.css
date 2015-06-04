@@ -63,27 +63,29 @@ button {
 
 .glyphicon-user {
   padding-left: 10px;
-  padding-top: 18px;
   font-size: 25px; }
 
 .glyphicon-star {
   font-size: 20px;
-  padding-top: 5px;
-  color: #505052; }
+  color: yellow;
+  float: right; }
 
-.glyphicon-star:hover {
-  color: yellow; }
+.glyphicon-star-empty {
+  font-size: 20px;
+  float: right; }
 
 .glyphicon-ok {
   padding-left: 5px;
   font-size: 20px;
-  color: #505052; }
+  color: #505052;
+  float: right; }
 
 .glyphicon-ok:hover {
   color: #40FF00; }
 
 .glyphicon-remove {
   padding-left: 10px;
+  padding-right: 10px;
   font-size: 20px;
   color: #505052; }
 
@@ -100,3 +102,7 @@ button {
 .message2 {
   border: none;
   font-weight: bold; }
+
+.information h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-style: bold; }

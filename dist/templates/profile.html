@@ -1,0 +1,50 @@
+
+<div class="container">
+ <div class="profile">
+
+   <!-- the markup for the user profile tab -->
+   <div class="user-account tab-pane" id="yourAccountTab">
+     <div class="page-header user-profile-header">Personal Information</div>
+       <div class="row">
+         <div class="col-md-7">
+           <form class="default-form" ng-submit="addUser()">
+             <div class="form-group col-md-12">
+               <label for="name">Name</label>
+               <input ng-model="newUserName" id="name" type="text" class="form-control"/>
+             </div>
+             <div class="form-group col-md-12">
+               <label for="email">Email</label>
+               <input ng-model="newUserEmail" name="email" type="text" class="form-control"/>
+             </div>
+             <div class="form-group col-md-6">
+               <label for="city">City</label>
+               <input ng-model="newUserCity" name="city" type="text" class="form-control"/>
+             </div>
+             <div class="form-group col-md-6">
+               <label for="state">State</label>
+               <input ng-model="newUserState" name="state" type="text" class="form-control"/>
+             </div>
+             <div class="form-group col-md-12">
+               <label for="country">Country</label>
+               <input ng-model="newUserCountry" name="country" type="text" class="form-control"/>
+             </div>
+             <button type="submit" class="default-button center-block" ng-click="addUser()">SAVE PROFILE</button>
+           </form>
+           <div style="padding: 20px" class="div"></div>
+           <form role="form" class="default-form">
+             <div class="form-group col-md-12">
+               <label for="password">Password</label>
+               <input name="password" type="password" class="form-control"/>
+             </div>
+             <div class="form-group col-md-12">
+               <label for="password">Password Confirmation</label>
+               <input name="password" type="password" class="form-control"/>
+             </div>
+             <button class="default-button center-block">CHANGE PASSWORD</button>
+           </form>
+         </div>
+       </div>
+   </div>
+
+ </div>
+</div>

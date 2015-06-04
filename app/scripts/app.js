@@ -17,6 +17,12 @@ var app = angular.module("Blocitoff", ["firebase", "ui.router"]);
      templateUrl: '/templates/history.html'
    });
 
+   $stateProvider.state('profile', {
+     url: '/profile',
+     controller: 'Profile.controller',
+     templateUrl: '/templates/profile.html'
+   });
+
  }]);
 
 // home controller
@@ -26,26 +32,22 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
 // create a synchronized (psuedo read-only) array
   $scope.tasks = $firebaseArray(ref);
   var fireTime = Firebase.ServerValue.TIMESTAMP;
+  $scope.priorityLevel = ['High', 'Low'];
+  $scope.priority = "Priority";
   
   $scope.addTask = function() { // add task to list
     var newTask = {
       text: $scope.newTaskText,
       done: false,
       expired: false,
-      created: fireTime
+      created: fireTime,
+      priority: $scope.priority
     };
 
     $scope.tasks.$add(newTask); // Push into array
     $scope.newTaskText = " ";
+    $scope.priority = "Priority";
   };
-
-    /*$interval(function(){
-      $scope.tasks.$add({
-      done: true
-      });
-      $scope.tasks.$save();
-      },3000);
-        };*/
 
   $scope.completeTask = function(task) { // remove completed task from list
     task.done = true;
@@ -56,17 +58,7 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
     $scope.tasks.$remove(task);
   };
 
- /* $scope.expiredTask = function(task) {
-    var today = new Date();
-      if(task.created === today.toDateString) {
-        task.expired = true;
-        $scope.tasks.$save(task);
-      };
-    };
-
-    $timeout( function(){ $scope.expiredTask(); }, 5000); */
-
- $scope.expiredTask = function() {
+  $scope.expiredTask = function() {
   console.log("Called expiredTask!");
   $scope.tasks.forEach(function(task){
     var createdAt = task.created,
@@ -81,10 +73,26 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
     console.log("Did not expire " + task);  
   }
   });
-}
+  }
 
+  $interval( function(){ $scope.expiredTask(); }, 86400000);
 
-$interval( function(){ $scope.expiredTask(); }, 86400000)
+  $scope.setPriority = function(priority) {
+    $scope.priority = priority;
+  };
+
+  $scope.highPriority = function(task) {
+    if (task.priority === "High") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  $scope.setNewPriority = function(task) {
+    task.priority = "High";
+    $scope.tasks.$save(task);
+  }
 
 
 }]);
@@ -98,6 +106,29 @@ app.controller('History.controller', ['$scope', '$firebaseArray', function($scop
 
   $scope.completeTask = function(task) {
     $scope.tasks.$remove(task);
+  };
+
+}]);
+
+app.controller('Profile.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+  var ref = new Firebase("https://justlistit.firebaseio.com");
+// create a synchronized (psuedo read-only) array
+// all server changes are downloaded in realtime
+  $scope.user = $firebaseArray(ref);
+
+
+  $scope.addUser = function() {
+    var newUser = {
+      name: $scope.newUserName,
+      email: $scope.newUserEmail,
+      city: $scope.newUserCity,
+      state: $scope.newUserState,
+      country: $scope.newUserCountry,
+      password: $scope.newUserPassword
+    };
+
+    $scope.user.$add(newUser); // Push into array
+    $scope.newUserName = " ";
   };
 
 }]);
