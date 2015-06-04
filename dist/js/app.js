@@ -115,11 +115,21 @@ app.controller('Profile.controller', ['$scope', '$firebaseArray', function($scop
   var ref = new Firebase("https://justlistit.firebaseio.com");
 // create a synchronized (psuedo read-only) array
 // all server changes are downloaded in realtime
-  $scope.tasks = $firebaseArray(ref);
+  $scope.user = $firebaseArray(ref);
 
 
-  $scope.completeTask = function(task) {
-    $scope.tasks.$remove(task);
+  $scope.addUser = function() {
+    var newUser = {
+      name: $scope.newUserName,
+      email: $scope.newUserEmail,
+      city: $scope.newUserCity,
+      state: $scope.newUserState,
+      country: $scope.newUserCountry,
+      password: $scope.newUserPassword
+    };
+
+    $scope.user.$add(newUser); // Push into array
+    $scope.newUserName = " ";
   };
 
 }]);

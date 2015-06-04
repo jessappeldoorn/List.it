@@ -102,3 +102,7 @@ button {
 .message2 {
   border: none;
   font-weight: bold; }
+
+.information h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-style: bold; }
