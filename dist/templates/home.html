@@ -17,12 +17,7 @@
               <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> {{ priority }} <span class="caret"></span></button>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                  <li ng-repeat="priority in priorityLevel"><a href="" ng-click="setPriority(priority)"> {{ priority }} </a></li>
-                  <!-- 
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li> -->
+                  <li ng-repeat="priority in priorityLevel"><a href="" ng-click="setPriority(priority)" > {{ priority }} </a></li>
                 </ul>
                 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
               </div>
@@ -31,20 +26,6 @@
       </div> <!-- end of row -->
     </div> <!-- end of container -->
 
-    <!--<div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-       
-            <form class="input-group" ng-submit="addTask()">
-              <input type="text" ng-model="newTaskText" class="form-control" placeholder="Add to your list..">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-              </span> 
-            </form>
-        </div> 
-      </div> 
-    </div>  -->
-
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
@@ -52,14 +33,14 @@
           <!-- List of tasks -->
           <div class="list-group-item" ng-show="newTaskText">
               <input type="text" disabled='true' class="todo" placeholder= "{{ newTaskText }}" >
-            </div>
-            <div class="list-group-item" ng-repeat="task in tasks" ng-hide="task.expired || task.done">
-              <div class="todo"> {{ task.text }} </div><br/>
-              <div class="todo">Priority: {{ task.priority }} </div>
-        <!--      <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)"> -->
-              <button ng-click="myStyle={color: 'yellow'}"><span class="glyphicon glyphicon-star" ng-style="myStyle"></span></button>
-              <span class="glyphicon glyphicon-ok" ng-model="task.done" ng-click="completeTask(task)"></span>
-              <span class="glyphicon glyphicon-remove" ng-click="deleteTask(task)"></span>
+          </div>
+          <div class="list-group-item" ng-repeat="task in tasks" ng-hide="task.expired || task.done">
+             <div class="todo"> {{ task.text }} <span class="glyphicon glyphicon-ok" ng-model="task.done" ng-click="completeTask(task)"></span>
+             <!-- <span class="glyphicon glyphicon-remove" ng-click="deleteTask(task)"></span>-->
+              <span class="glyphicon glyphicon-star" ng-show="highPriority(task)"></span><span class="glyphicon glyphicon-star-empty" ng-show="!highPriority(task)" ng-click="setNewPriority(task)"></span></div>
+           <!--  <div class="todo">Priority: {{ task.priority }} </div>
+             <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)"> -->
+             <!-- <button ng-click="myStyle={color: 'yellow'}"><span class="glyphicon glyphicon-star" ng-hide="task.priority === High" ng-style="myStyle"></span></button>-->
           </div>
         </div><!-- end of col-lg-6 -->
       </div> <!-- end of row -->
@@ -77,19 +58,5 @@
   <p>Our hypothesis is that, if the task is not important enough to be completed within seven days, it does not belong on your to-do list!  Now, go and accomplish something great!  As an added bonus, view your list history to track your progress and motivate yourself to finish tasks that a truly important to you.</p>
 </div>
 
-
-<!-- this ng-click talks to the testAdd function -->
-   <!-- <button ng-click="testAdd()">Click me to test adding!</button> -->
-
- <!--task in tasks
-
-on home.html: ng-click="testAdd()"
-home.html: repeat through task in tasks
-add ng-click="testAdd()" to element (try a button!)
-
-app.js: add testAdd function:
-$scope.testAdd = function(){
-    $scope.tasks.$add({note: 'hello'})
-}
 
 

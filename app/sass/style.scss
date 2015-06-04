@@ -90,18 +90,20 @@ button {
 
 .glyphicon-star {
   font-size: 20px;
-  padding-top: 5px;
-  color: #505052;
+  color: yellow;
+  float: right;
 }
 
-.glyphicon-star:hover {
-  color: yellow;
+.glyphicon-star-empty {
+  font-size: 20px;
+  float: right;
 }
 
 .glyphicon-ok {
   padding-left: 5px;
   font-size: 20px;
   color: #505052;
+  float: right;
 }
 
 .glyphicon-ok:hover {
@@ -110,6 +112,7 @@ button {
 
 .glyphicon-remove {
   padding-left: 10px;
+  padding-right: 10px;
   font-size: 20px;
   color: #505052;
 }
@@ -132,5 +135,8 @@ button {
   font-weight: bold;
 }
 
+.profile {
+  
+}
 
 

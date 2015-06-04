@@ -32,7 +32,7 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
 // create a synchronized (psuedo read-only) array
   $scope.tasks = $firebaseArray(ref);
   var fireTime = Firebase.ServerValue.TIMESTAMP;
-  $scope.priorityLevel = ['High', 'Medium', 'Low'];
+  $scope.priorityLevel = ['High', 'Low'];
   $scope.priority = "Priority";
   
   $scope.addTask = function() { // add task to list
@@ -78,9 +78,22 @@ app.controller('Home.controller', ['$scope', '$firebaseArray', '$interval', '$ti
   $interval( function(){ $scope.expiredTask(); }, 86400000);
 
   $scope.setPriority = function(priority) {
-  console.log("Priority set to " + priority);
-  $scope.priority = priority;
+    $scope.priority = priority;
   };
+
+  $scope.highPriority = function(task) {
+    if (task.priority === "High") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  $scope.setNewPriority = function(task) {
+    task.priority = "High";
+    $scope.tasks.$save(task);
+  }
+
 
 }]);
 
