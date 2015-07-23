@@ -1,4 +1,4 @@
-Bloc Base Project
+List.It
 =================
 
 A base for Bloc frontend projects.
