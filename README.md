@@ -1,29 +1,30 @@
 List.It
 =================
 
-A single-page web app for your task lists.
+List-It uses the Firebase API and AngularJS to create a single-page app that lists tasks with an expiration date.
 
-## Configuration
+## Use Case
 
-Configuring this project should be consistent across Nitrous, Mac (local), and Vagrant.
+To-do lists are notorious for collecting junk - tasks that you want to remember but constantly reprioritize. To solve the problem of to-do list clutter, you will build Blocitoff. Blocitoff is a web application that will manage your to-do lists by automatically deleting tasks that have not been completed after seven days.
 
-Start by cloning the repository
+Our hypothesis is that if the task is not important enough to be completed within seven days, it does not belong on your to-do list.
 
-```
-$ git clone https://github.com/Bloc/base-frontend-project.git <your-frontend-project-name>
-```
+## User Story Breakdown
 
-The project uses Grunt to run tasks (detailed below); start by installing the Grunt Command Line Interface (`grunt-cli`) globally on your machine.
+| User Story | Description
+| :-------: | :--------------: |
+| **As a user, I want my tasks synced with a persistent backend** | Synchronize Data (an Array of Tasks) With Firebase |
+| **Creating a New Game Project** | Create a basic 2d game project as provided by Xcode |
+| **Adding Assets** | [`02-adding-assets.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/02-adding-assets.md) | Import the assets required for Swiftrs: images, sounds, icons |
+| **And Array We Go** | [`03-array-we-go.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/03-array-we-go.md) | Create the custom 2D array class which will maintain Swiftris' game board |
+| **A Ticking Clock** | [`04-a-ticking-clock.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/04-a-ticking-clock.md) | Add the logic for tracking the time between each of the shape's descents |
+| **Block Party** | [`05-block-party.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/05-block-party.md) | Build the class which will represent each individual square block on the board |
+| **Shaping Up** | [`06-shaping-up.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/06-shaping-up.md) | Create the class responsible for arranging blocks into Tetromino shapes |
+| **Let Them Fall** | [`07-let-them-fall.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/07-let-them-fall.md) | Add the logic required to support the descent of an active Shape object |
+| **Playing by the Rules** | [`08-playing-by-the-rules.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/08-playing-by-the-rules.md) | Introduce a significant portion of Swiftris' game logic |
+| **Touch Me, Move Me** | [`09-touch-me-move-me.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/09-touch-me-move-me.md) | Add gesture detection to Swiftris, permit user control |
+| **Adding Flare** | [`10-adding-flare.md`](https://github.com/Bloc/swiftris-checkpoints/blob/master/10-adding-flare.md) | Finally, add fanciful animations and visual elements for displaying the player's level and score |
 
-```
-$ npm install -g grunt-cli
-```
-
-Once that's complete, install the remaining project dependencies by running
-
-```
-$ npm install
-```
 
 ## Grunt
 
