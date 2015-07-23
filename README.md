@@ -1,11 +1,11 @@
-List.It
+List.it
 =================
 
-List-It uses the Firebase API and AngularJS to create a single-page app that lists tasks with an expiration date.
+List.it uses the Firebase API and AngularJS to create a single-page app that lists tasks with an expiration date.
 
 ## Use Case
 
-To-do lists are notorious for collecting junk - tasks that you want to remember but constantly reprioritize. To solve the problem of to-do list clutter, I built List.It, a project I implemented while studying through the web development bootcamp, Bloc, Inc. List.It is a web application that manages your to-do lists by automatically deleting tasks that have not been completed after seven days.
+To-do lists are notorious for collecting junk - tasks that you want to remember but constantly reprioritize. To solve the problem of to-do list clutter, I built List.it, a project I implemented while studying through the web development bootcamp, Bloc, Inc. List.it is a web application that manages your to-do lists by automatically deleting tasks that have not been completed after seven days.
 
 If the task is not important enough to be completed within seven days, it does not belong on your to-do list.
 
