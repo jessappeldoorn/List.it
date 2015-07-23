@@ -1,7 +1,7 @@
 List.It
 =================
 
-A base for Bloc frontend projects.
+A single-page web app for your task lists.
 
 ## Configuration
 
