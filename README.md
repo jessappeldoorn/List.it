@@ -11,7 +11,7 @@ If the task is not important enough to be completed within seven days, it does n
 
 ## User Story Breakdown
 
-| User Story | Description
+| User Story | Implementation
 | :-------: | :--------------: |
 | **As a user, I want my tasks synced with a persistent backend** | Synchronize Data (an Array of Tasks) With Firebase |
 | **As a user, I want to see my active tasks in a list as my default view** | Configure ui-router and controller to handle views and display tasks in a list using ngRepeat |
