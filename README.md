@@ -1,7 +1,7 @@
 List.it
 =================
 
-List.it uses the Firebase API and AngularJS to create a single-page app that lists tasks with an expiration date.
+List.it uses the Firebase API and AngularJS to create a single-page web app that lists tasks with an expiration date.
 
 ## Use Case
 
